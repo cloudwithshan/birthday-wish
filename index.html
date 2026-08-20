@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="rose">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Muskii // Birthday Portfolio & Memory Hub</title>
+  <meta name="description" content="A warm, romantic birthday portfolio handcrafted for Muskii. Chronicling 1+ year of love, laughs, and playful combat.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Background Particles Canvas -->
+  <canvas id="particles-canvas"></canvas>
+  
+  <!-- Full-screen Fireworks Canvas -->
+  <canvas id="fireworks-canvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 99999; pointer-events: none; display: none;"></canvas>
+
+  <!-- Birthday Greeting Overlay (Triggers with Fireworks) -->
+  <div id="birthday-greeting-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999999; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.55); pointer-events: none; opacity: 0; transition: opacity 0.8s ease;">
+    <div style="text-align: center; color: #fff; padding: 30px; border-radius: 24px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 40px rgba(255, 107, 129, 0.4); max-width: 600px; width: 90%;">
+      <h1 style="font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 700; margin-bottom: 12px; color: #fff; text-shadow: 0 0 20px rgba(255,107,129,0.8); line-height: 1.2;">Happy Birthday Sana 🎂</h1>
+      <p style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-style: italic; color: #ffb8b8; text-shadow: 0 0 10px rgba(0,0,0,0.5); font-weight: 500; margin: 0;">from Soni Baji and Shuaib Bhai ♥</p>
+    </div>
+  </div>
+
+  <!-- Areeb & Zuni Kids Surprise Overlay Gate (Launches after fireworks end) -->
+  <div id="kids-surprise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999999; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.65); opacity: 0; transition: opacity 0.8s ease;">
+    
+    <!-- 1. The Quiz Box -->
+    <div id="kids-quiz-box" style="text-align: center; color: #fff; padding: clamp(15px, 4vw, 30px); border-radius: 24px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 40px rgba(0,0,0,0.3); max-width: 500px; width: 90%; box-sizing: border-box; overflow-y: auto; max-height: 92vh;">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 4.5vw, 1.9rem); line-height: 1.35; margin-bottom: 15px; color: #fff; white-space: normal; word-break: break-word;">Areeb & Zuni's Golden Rule test 🧸</h2>
+      <p style="font-size: clamp(0.9rem, 3.5vw, 1.05rem); color: #ffe3e3; margin-bottom: 20px; font-weight: 500; line-height: 1.45;">Khala ke pyaare Areeb aur Zuni ka secret message unlock karne ke liye sahi option select karein:<br><strong>Life ka sabse bada sach kya hai?</strong></p>
+      
+      <div id="kids-quiz-error" style="color: var(--accent-secondary); font-size: 0.9rem; margin-bottom: 15px; min-height: 20px; font-weight: 600;"></div>
+      
+      <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+        <button class="welcome-btn" id="btn-kids-quiz-tang" style="padding: 12px 0; font-size: 1rem; width: 100%; cursor: pointer;">Khala jaan ko tang karna! 😜</button>
+        <button class="welcome-btn" id="btn-kids-quiz-manage" style="padding: 12px 0; font-size: 1rem; width: 100%; cursor: pointer;">Khala jaan, Manage karna hi Life hai! 🌸</button>
+      </div>
+    </div>
+
+    <!-- 2. The Wishes Card (Hidden initially, shown on correct answer) -->
+    <div id="kids-wishes-box" style="display: none; text-align: center; color: #fff; padding: clamp(15px, 4vw, 30px); border-radius: 24px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 40px rgba(255, 107, 129, 0.35); max-width: 550px; width: 90%; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; overflow-y: auto; max-height: 92vh;">
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 700; margin-bottom: 20px; color: #fff; text-shadow: 0 0 15px rgba(255,107,129,0.8); border-bottom: 2px solid rgba(255,255,255,0.15); padding-bottom: 12px; width: 100%; white-space: normal; word-break: break-word; text-align: center;">Surprise from Areeb & Zuni!</h2>
+      
+      <!-- Kids Photos Grid -->
+      <div style="display: flex; gap: clamp(10px, 3vw, 20px); justify-content: center; margin-bottom: 20px; width: 100%;">
+        <div style="flex: 1; max-width: 160px; background: #fff; padding: 6px 6px 12px 6px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.25); text-align: center;">
+          <img src="images/areeb.png" alt="Areeb" style="width: 100%; height: auto; display: block; border-radius: 8px; object-fit: cover;">
+          <p style="margin-top: 8px; font-weight: 700; font-size: clamp(0.9rem, 3vw, 1.05rem); color: #222; margin-bottom: 0;">Areeb 👦</p>
+        </div>
+        <div style="flex: 1; max-width: 160px; background: #fff; padding: 6px 6px 12px 6px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.25); text-align: center;">
+          <img src="images/zuni.png" alt="Zuni" style="width: 100%; height: auto; display: block; border-radius: 8px; object-fit: cover;">
+          <p style="margin-top: 8px; font-weight: 700; font-size: clamp(0.9rem, 3vw, 1.05rem); color: #222; margin-bottom: 0;">Zuni 👧</p>
+        </div>
+      </div>
+      
+      <!-- Message -->
+      <div style="background: rgba(0,0,0,0.35); padding: clamp(12px, 3vw, 20px); border-radius: 16px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); line-height: 1.5; font-size: clamp(0.85rem, 3vw, 1.0rem); width: 100%; box-sizing: border-box;">
+        <p style="font-weight: 700; color: #ffb8b8; font-size: clamp(0.95rem, 3vw, 1.1rem); margin-bottom: 6px;">" Khaala jaan Hamari Taraf se bhi Happy Birthday ! "</p>
+        <p style="color: #fff; font-style: italic; font-weight: 500;">
+          " or Khala jaan Manage Karna hi Life hai , Hame bhi kariye or , U know Very welll , He He He 😜 "
+        </p>
+      </div>
+      
+      <button class="welcome-btn" id="btn-kids-enter" style="padding: 12px 40px; font-size: 1.05rem; cursor: pointer; border-radius: 25px;">Explore Dashboard 💌</button>
+    </div>
+    
+  </div>
+
+  <!-- ==========================================================================
+       INITIAL INTERACTION OVERLAY (BYPASSES AUTOPLAY RESTRICTIONS)
+       ========================================================================== -->
+  <div class="welcome-overlay" id="welcome-overlay">
+    <div class="welcome-card">
+      <svg class="welcome-card-icon" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+      <h2>You have a birthday surprise!</h2>
+      <p>I have compiled a special surprise website for your birthday. Tap below to open it and start the music!</p>
+      <button class="welcome-btn" id="welcome-btn">Open Surprise 💌</button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       STAGE 1 CONTAINER: LOCKSCREEN
+       ========================================================================== -->
+  <div class="stage-container" id="stage-container-main">
+    
+    <div class="stage active" id="stage-lock">
+      <div class="lock-header">
+        <h1>For Muskii's Eyes Only 💖</h1>
+        <p>A SPECIAL SURPRISE // ENTER CODE TO UNLOCK</p>
+      </div>
+
+      <!-- Countdown Timer Box -->
+      <div class="countdown-container">
+        <p class="countdown-title">Countdown to Birthday 🎂</p>
+        <div class="countdown-timer-box">
+          <div class="countdown-cell">
+            <div class="countdown-num days-val">00</div>
+            <div class="countdown-lbl">Days</div>
+          </div>
+          <div class="countdown-cell">
+            <div class="countdown-num hours-val">00</div>
+            <div class="countdown-lbl">Hours</div>
+          </div>
+          <div class="countdown-cell">
+            <div class="countdown-num minutes-val">00</div>
+            <div class="countdown-lbl">Mins</div>
+          </div>
+          <div class="countdown-cell">
+            <div class="countdown-num seconds-val">00</div>
+            <div class="countdown-lbl">Secs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lock-status" id="lock-status">ENTER THE 3-DIGIT PASSCODE</div>
+
+      <!-- Passcode Pad -->
+      <div class="passcode-container">
+        <div id="bypass-pad" style="display: block; margin-top: 5px;">
+          <p class="passcode-title">Hint: Days in a Year 🌸</p>
+          <div class="passcode-input-wrapper">
+            <div class="passcode-dot" id="dot-0"></div>
+            <div class="passcode-dot" id="dot-1"></div>
+            <div class="passcode-dot" id="dot-2"></div>
+          </div>
+          
+          <div class="numpad">
+            <button class="numpad-btn" data-num="1">1</button>
+            <button class="numpad-btn" data-num="2">2</button>
+            <button class="numpad-btn" data-num="3">3</button>
+            <button class="numpad-btn" data-num="4">4</button>
+            <button class="numpad-btn" data-num="5">5</button>
+            <button class="numpad-btn" data-num="6">6</button>
+            <button class="numpad-btn" data-num="7">7</button>
+            <button class="numpad-btn" data-num="8">8</button>
+            <button class="numpad-btn" data-num="9">9</button>
+            <button class="numpad-btn" data-num="clear">C</button>
+            <button class="numpad-btn" data-num="0">0</button>
+            <button class="numpad-btn" id="bypass-love-btn" style="font-size: 0.8rem;">♥</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==========================================================================
+       STAGE 2: MAIN PORTFOLIO DASHBOARD
+       ========================================================================== -->
+  <div class="dashboard-wrapper" id="dashboard-wrapper" style="display: none;">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-navbar">
+      <div class="nav-title">
+        <svg style="width: 26px; height: 26px; fill: var(--accent-primary);" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span>Happy Birthday Muskii! 🌸</span>
+      </div>
+      
+      <div class="nav-status">SURPRISE SYSTEM ONLINE</div>
+      
+      <div class="nav-controls">
+        <div class="theme-selector">
+          <button class="theme-btn" id="theme-btn">
+            <span class="theme-dot td-rose"></span>
+            <span>Theme: Pastel Rose</span>
+            <svg style="width: 12px; height: 12px; fill: currentColor;" viewBox="0 0 24 24">
+              <path d="M7 10l5 5 5-5z"/>
+            </svg>
+          </button>
+          
+          <div class="theme-dropdown" id="theme-dropdown">
+            <button class="theme-option active" data-theme-val="rose">
+              <span class="theme-dot td-rose"></span>
+              <span>Pastel Rose</span>
+            </button>
+            <button class="theme-option" data-theme-val="lavender">
+              <span class="theme-dot td-lavender"></span>
+              <span>Cosmic Lavender</span>
+            </button>
+            <button class="theme-option" data-theme-val="ruby">
+              <span class="theme-dot td-ruby"></span>
+              <span>Deep Ruby</span>
+            </button>
+            <button class="theme-option" data-theme-val="peach">
+              <span class="theme-dot td-peach"></span>
+              <span>Playful Peach</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Grid -->
+    <div class="dashboard-content">
+      
+      <!-- Sidebar Navigation Tab buttons -->
+      <aside class="sidebar-tabs">
+        <button class="tab-btn active" data-tab="timeline">
+          <svg viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.2 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 2C9.48 2 7.02 2.81 5 4.35V2H3v10h10V10H7.03C8.42 8.79 10.13 8 12 8c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8H2c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/></svg>
+          <span>Memory Hub</span>
+        </button>
+        <button class="tab-btn" data-tab="proof">
+          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span>"Any Proof?"</span>
+        </button>
+        <button class="tab-btn" data-tab="music">
+          <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+          <span>Bollywood Player</span>
+        </button>
+        <button class="tab-btn" data-tab="letter">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <span>Letter & Wishes</span>
+        </button>
+        <button class="tab-btn" data-tab="vault">
+          <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+          <span>Secret Vault</span>
+        </button>
+      </aside>
+
+      <!-- Main Display Panels -->
+      <main class="display-panels">
+        
+        <!-- PANEL 1: NEURAL MEMORY TIMELINE -->
+        <section class="panel active" id="panel-timeline">
+          <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
+            <div>
+              <h2>Our Memory Hub</h2>
+              <p>A beautiful walk down memory lane: July 2025 to Present (1+ Year)</p>
+            </div>
+            
+            <!-- Dashboard Floating Countdown Display -->
+            <div class="countdown-timer-box" style="margin: 0;">
+              <div class="countdown-cell" style="padding: 4px 8px; min-width: 50px;">
+                <div class="countdown-num days-val" style="font-size:1.1rem;">00</div>
+                <div class="countdown-lbl" style="font-size:0.5rem;">Days</div>
+              </div>
+              <div class="countdown-cell" style="padding: 4px 8px; min-width: 50px;">
+                <div class="countdown-num hours-val" style="font-size:1.1rem;">00</div>
+                <div class="countdown-lbl" style="font-size:0.5rem;">Hours</div>
+              </div>
+              <div class="countdown-cell" style="padding: 4px 8px; min-width: 50px;">
+                <div class="countdown-num minutes-val" style="font-size:1.1rem;">00</div>
+                <div class="countdown-lbl" style="font-size:0.5rem;">Mins</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Memory Hub Quiz Gate -->
+          <div id="timeline-quiz-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; padding: 35px 20px; background: rgba(255, 255, 255, 0.45); border-radius: 20px; border: 1px solid var(--card-border); max-width: 480px; margin: 40px auto; position: relative;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.7rem; color: var(--accent-primary); margin-bottom: 12px;">Timeline Sync Auth 📅</h3>
+            <p style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 25px; font-weight: 600; line-height: 1.5;">First, align your memory cores! In which month of 2025 did we start talking?</p>
+            <div id="timeline-quiz-error" style="color: var(--accent-secondary); font-size: 0.85rem; margin-bottom: 15px; min-height: 18px; font-weight: 500;"></div>
+            <div style="display: flex; gap: 15px; justify-content: center; width: 100%;">
+              <button class="welcome-btn" id="btn-quiz-time-june" style="padding: 10px 25px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">June 2025</button>
+              <button class="welcome-btn" id="btn-quiz-time-july" style="padding: 10px 25px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">July 2025</button>
+            </div>
+          </div>
+          
+          <div class="timeline-hub" id="timeline-hub" style="display: none;">
+            <div class="timeline-line-vertical"></div>
+            
+            <div class="timeline-node">
+              <div class="timeline-dot-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-date">JULY 2025</div>
+                <h3>The Day We Connected</h3>
+                <p>The day you walked into my life and updated my whole world. From our very first chat, you had me smiling like crazy. Talking to you instantly made me feel so good and happy. This is where it all started.</p>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="timeline-dot-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-date">OCTOBER 2025</div>
+                <h3>The First Cute War</h3>
+                <p>The day I realized that you are sometimes 'at war' with me! You get cranky, you start cute mini-battles, but honestly? It is the best thing ever. I love yielding to your wars, as long as it makes you laugh at the end.</p>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="timeline-dot-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-date">FEBRUARY 2026</div>
+                <h3>1+ Year Threshold</h3>
+                <p>Over a full year of late-night calls, endless laughter loops, and sharing jokes. You have become my absolute favorite routine, my safe space, and the person who makes me feel best.</p>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="timeline-dot-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-date">TODAY</div>
+                <h3>Happy Birthday, Muskii! 🎂</h3>
+                <p>Your special day! A permanent drive of love is loaded. Today is all about keeping you happy, making you laugh, and celebrating the wonderful girl you are. No cute wars allowed today (unless you want to!).</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 2: "ANY PROOF?" PHOTO ARCHIVE -->
+        <section class="panel" id="panel-proof">
+          <div class="panel-header">
+            <h2>The "Any Proof?" Archive</h2>
+            <p>Every time she asks "Any proof?", here is the official evidence files.</p>
+          </div>
+          <!-- Playful Confession Quiz before opening proof -->
+          <div id="proof-quiz-container" style="display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; padding: 30px 20px; background: rgba(255, 255, 255, 0.45); border-radius: 20px; border: 1px solid var(--card-border); max-width: 480px; margin: 40px auto; position: relative;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-primary); margin-bottom: 12px;">A Little Confession First... 🤔</h3>
+            <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 30px; font-weight: 600; line-height: 1.5;">Hamesha galti kiski hoti hai?</p>
+            
+            <div class="quiz-buttons-group" style="display: flex; gap: 20px; justify-content: center; width: 100%; position: relative; height: 50px;">
+              <button class="welcome-btn" id="btn-quiz-meri" style="padding: 10px 30px; font-size: 0.95rem; cursor: pointer; border-radius: 25px; transition: transform 0.2s;">Meri</button>
+              <button class="welcome-btn" id="btn-quiz-tumhari" style="padding: 10px 30px; font-size: 0.95rem; cursor: pointer; border-radius: 25px; background: transparent; border: 1px solid var(--card-border); color: var(--text-main); position: absolute; left: 55%; transition: all 0.2s ease;">Tumhari</button>
+            </div>
+          </div>
+          
+          <div class="proof-grid" id="proof-grid" style="display: none;">
+            
+            <!-- Proof 1 -->
+            <div class="proof-card">
+              <div class="proof-img-wrapper">
+                <img class="proof-img" src="images/fear_proof.jpg" alt="Proof of Fear">
+              </div>
+              <div class="proof-details">
+                <span class="proof-tag">Exhibit A // State of Fear</span>
+                <h3 class="proof-title">1. Proof of keeping in a state of fear</h3>
+                <p class="proof-desc">Exhibit A exhibits severe signs of psychological threat! Under constant monitoring and cute surveillance. Even at dinner, I must maintain absolute compliance and be on my best behavior, or face the warning bells of an immediate Cute War outbreak.</p>
+              </div>
+            </div>
+
+            <!-- Proof 2 -->
+            <div class="proof-card">
+              <div class="proof-img-wrapper">
+                <img class="proof-img" src="images/love_proof.jpg" alt="Proof of Love">
+              </div>
+              <div class="proof-details">
+                <span class="proof-tag">Exhibit B // Affection Sync</span>
+                <h3 class="proof-title">2. Proof of love from my side</h3>
+                <p class="proof-desc">Exhibit B displays absolute love and comfort. That soft chin-hold and touch that instantly recharges my happiness indicator to 100%. When she touches my face, all my worries disappear, and I feel completely at peace.</p>
+              </div>
+            </div>
+
+            <!-- Proof 3 -->
+            <div class="proof-card">
+              <div class="proof-img-wrapper">
+                <img class="proof-img" src="images/beaten_proof.jpg" alt="Beaten Proof">
+              </div>
+              <div class="proof-details">
+                <span class="proof-tag">Exhibit C // Playful Defeat</span>
+                <h3 class="proof-title">3. She's beaten proof</h3>
+                <p class="proof-desc">Exhibit C showcases physical exhaustion and playful defeat. The victim is seen resting his chin on his hand after a relentless cute battle in the park, while the perpetrator smiles victoriously next to him, ready for the next round of combat.</p>
+              </div>
+            </div>
+
+            <!-- Proof 4 -->
+            <div class="proof-card">
+              <div class="proof-img-wrapper">
+                <img class="proof-img" src="images/not_innocent_proof.jpg" alt="Not Innocent Proof">
+              </div>
+              <div class="proof-details">
+                <span class="proof-tag">Exhibit D // Innocent Impostor</span>
+                <h3 class="proof-title">4. Make innocent but she's not</h3>
+                <p class="proof-desc">Exhibit D debunks the 'Innocent' claim. She claims to be a quiet, innocent angel, but photographic evidence shows her actively plotting mischievous pranks (and rocking a cute hair-mustache!). Guilty of high-treason mischief, but sentenced to infinite love.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- PANEL 3: AUDIO PLAYER -->
+        <section class="panel" id="panel-music">
+          <div class="panel-header">
+            <h2>Lofi Audio Synapse</h2>
+            <p>Pulsing romantic tracks to sync with your birthday emotions.</p>
+          </div>
+          
+          <!-- Music Player Quiz Gate -->
+          <div id="music-quiz-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; padding: 35px 20px; background: rgba(255, 255, 255, 0.45); border-radius: 20px; border: 1px solid var(--card-border); max-width: 480px; margin: 40px auto; position: relative;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.7rem; color: var(--accent-primary); margin-bottom: 12px;">Audio Synapse Auth 🎤</h3>
+            <p style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 25px; font-weight: 600; line-height: 1.5;">To activate the audio synapses, who is your absolute favorite singer?</p>
+            <div id="music-quiz-error" style="color: var(--accent-secondary); font-size: 0.85rem; margin-bottom: 15px; min-height: 18px; font-weight: 500;"></div>
+            <div style="display: flex; gap: 15px; justify-content: center; width: 100%;">
+              <button class="welcome-btn" id="btn-quiz-music-arijit" style="padding: 10px 25px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">Arijit Singh</button>
+              <button class="welcome-btn" id="btn-quiz-music-partner" style="padding: 10px 25px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">Mera Partner ♥</button>
+            </div>
+          </div>
+          
+          <div class="audio-player-panel" id="audio-player-panel" style="display: none;">
+            <div class="player-core">
+              <div class="album-art-spin" id="album-disk">
+                <div class="album-art-center"></div>
+              </div>
+              
+              <div class="track-details">
+                <div class="track-title" id="display-track-title">Arz Kiya Hai</div>
+                <div class="track-artist" id="display-track-artist">Coke Studio Bharat</div>
+                
+                <div class="progress-bar-container">
+                  <div class="timeline-slider-track" id="timeline-slider">
+                    <div class="timeline-fill" id="timeline-fill"></div>
+                  </div>
+                  <div class="time-indicators">
+                    <span id="time-current">0:00</span>
+                    <span id="time-duration">4:01</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Play Controls -->
+            <div class="player-controls">
+              <button class="player-btn" id="prev-song" title="Previous Track">
+                <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+              </button>
+              
+              <button class="player-btn btn-play-pause" id="play-pause" title="Play / Pause">
+                <svg viewBox="0 0 24 24" id="play-pause-icon">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+              
+              <button class="player-btn" id="next-song" title="Next Track">
+                <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6zm9-12v12h2V6z"/></svg>
+              </button>
+            </div>
+
+            <div class="volume-container">
+              <svg style="width: 16px; height: 16px; fill: var(--text-muted);" viewBox="0 0 24 24">
+                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+              </svg>
+              <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05" value="0.7">
+            </div>
+
+            <!-- Local file uploader -->
+            <div class="custom-track-uploader">
+              <p>Want to load your own favorite Bollywood MP3 song? Load it directly here:</p>
+              <label for="track-file-input">Select Audio File from Device</label>
+              <input type="file" id="track-file-input" accept="audio/*">
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 4: LETTER & WISHES -->
+        <section class="panel" id="panel-letter">
+          <div class="panel-header">
+            <h2>Love Letter & Wishes</h2>
+            <p>Read my heartfelt note, or generate a custom AI birthday wish.</p>
+          </div>
+          
+          <!-- Letter Quiz Gate -->
+          <div id="letter-quiz-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; padding: 35px 20px; background: rgba(255, 255, 255, 0.45); border-radius: 20px; border: 1px solid var(--card-border); max-width: 480px; margin: 40px auto; position: relative;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.7rem; color: var(--accent-primary); margin-bottom: 12px;">Emotional Core containment Auth 🤝</h3>
+            <p style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 25px; font-weight: 600; line-height: 1.5;">Do you promise not to declare a Cute War for the next 5 minutes?</p>
+            <div id="letter-quiz-error" style="color: var(--accent-secondary); font-size: 0.85rem; margin-bottom: 15px; min-height: 18px; font-weight: 500;"></div>
+            <div style="display: flex; gap: 15px; justify-content: center; width: 100%;">
+              <button class="welcome-btn" id="btn-quiz-let-war" style="padding: 10px 20px; font-size: 0.95rem; cursor: pointer; border-radius: 25px; background: transparent; border: 1px solid var(--card-border); color: var(--text-main);">No, War is permanent! ⚔️</button>
+              <button class="welcome-btn" id="btn-quiz-let-peace" style="padding: 10px 20px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">Okay, I promise! 🌸</button>
+            </div>
+          </div>
+          
+          <div class="letter-center-wrapper" id="letter-center-wrapper" style="display: none;">
+            <!-- Envelope wrapper -->
+            <div class="envelope-container" id="envelope">
+              <div class="envelope-flap"></div>
+              <div class="envelope-body"></div>
+              <div class="envelope-seal">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </div>
+              <div class="letter-paper">
+                <div class="letter-preview-text">
+                  Dearest Muskii,
+
+                  It has been over a year since you entered my life, and I still can't believe how lucky I am. Talking to you makes me laugh...
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic wish generator sub-box -->
+            <div class="wish-sub-box">
+              <h3 class="protocol-title">Generate an AI Wish</h3>
+              <div class="vibe-selector-group">
+                <button class="vibe-btn active" data-vibe="emotional">Emotional</button>
+                <button class="vibe-btn" data-vibe="cyber">Futuristic/AI</button>
+                <button class="vibe-btn" data-vibe="cute">Playful & Cute</button>
+              </div>
+
+              <div class="wish-output-box">
+                <div class="wish-text" id="wish-text">Select a vibe and click generate to write a letter...</div>
+              </div>
+
+              <button class="generate-wish-btn" id="btn-generate-wish">GENERATE BIRTHDAY WISH</button>
+            </div>
+          </div>
+
+          <!-- Fullscreen letter modal -->
+          <div class="letter-overlay" id="letter-overlay">
+            <div class="letter-modal">
+              <button class="close-letter-btn" id="close-letter-btn">×</button>
+              <div class="letter-full-content">
+                <strong>Dearest Muskii,</strong>
+
+                Happy Birthday! 🎂💖
+
+                It has been over a year since you entered my life, and looking back, it's the absolute best thing that has ever happened to me. When I talk to you, I laugh, I feel safe, and I feel incredibly good. You have this magical ability to wash away all my worries with just a single laugh.
+
+                Yes, you go to war with me sometimes. You get cranky, you start cute arguments, and you declare playful combat. But I want you to know—I love your 'War Mode' just as much as your happy mode. It makes us 'us', and I would gladly lose every single cute war to you for the rest of my life, as long as it ends with a smile on your face.
+
+                You are my comfort, my favorite notification, and my heart's core. Thank you for a wonderful year, and I hope this birthday brings you all the laughter and happiness you bring to me.
+
+                Yours forever,
+                <strong>Your Favourite Person</strong> ♥
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PANEL 5: THE SECRET VAULT -->
+        <section class="panel" id="panel-vault">
+          <div class="panel-header">
+            <h2>The Secret Vault</h2>
+            <p>Unlock the vault to retrieve your virtual coupons.</p>
+          </div>
+          
+          <!-- Vault Quiz Gate -->
+          <div id="vault-quiz-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; padding: 35px 20px; background: rgba(255, 255, 255, 0.45); border-radius: 20px; border: 1px solid var(--card-border); max-width: 480px; margin: 40px auto; position: relative;">
+            <h3 style="font-family: var(--font-heading); font-size: 1.7rem; color: var(--accent-primary); margin-bottom: 12px;">Vault Access Auth 🔒</h3>
+            <p style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 25px; font-weight: 600; line-height: 1.5;">Authentication required: What is my favorite thing about you?</p>
+            <div id="vault-quiz-error" style="color: var(--accent-secondary); font-size: 0.85rem; margin-bottom: 15px; min-height: 18px; font-weight: 500;"></div>
+            <div style="display: flex; gap: 15px; justify-content: center; width: 100%;">
+              <button class="welcome-btn" id="btn-quiz-vault-fake" style="padding: 10px 20px; font-size: 0.95rem; cursor: pointer; border-radius: 25px; background: transparent; border: 1px solid var(--card-border); color: var(--text-main);">Your innocence (fake one)</button>
+              <button class="welcome-btn" id="btn-quiz-vault-smile" style="padding: 10px 20px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">Your laugh and smile ♥</button>
+            </div>
+          </div>
+          
+          <div class="vault-panel" id="vault-panel" style="display: none;">
+            
+            <!-- Vault Lock View -->
+            <div class="vault-lock-view" id="vault-lock-view">
+              <div class="vault-dial-box">
+                <div class="vault-dial-ring" id="vault-dial-ring"></div>
+                <div class="vault-dial-center">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="vault-status-text" id="vault-status-text">VAULT SECURED // SECURITY KEY CODE SYNC REQUIRED</div>
+              <button class="vault-unlock-btn" id="vault-unlock-btn">UNLOCK VAULT</button>
+            </div>
+
+            <!-- Vault Unlocked View -->
+            <div class="vault-unlocked-view" id="vault-unlocked-view">
+              
+              <!-- Scratch card -->
+              <div class="scratch-card-box">
+                <div class="scratch-card-under">
+                  <h4>Happy Birthday! 🎉</h4>
+                  <p>You unlocked a: <strong>"No War - 24hr Ceasefire Coupon"</strong>! Valid for one full day of agreeing blindly with you. ♥</p>
+                </div>
+                <canvas id="scratch-canvas"></canvas>
+              </div>
+
+              <!-- Extra vouchers/cards list -->
+              <div class="vault-reward-list">
+                <div class="reward-card">
+                  <div class="reward-icon">🍫</div>
+                  <h4 class="reward-title">Chocolate.exe Voucher</h4>
+                  <p class="reward-desc">Redeemable for one giant chocolate bar whenever you enter Cute War Mode.</p>
+                </div>
+
+                <div class="reward-card">
+                  <div class="reward-icon">☕</div>
+                  <h4 class="reward-title">Infinite Coffee/Tea Date</h4>
+                  <p class="reward-desc">Redeemable for a long late-night talk where I listen to you rant about anything.</p>
+                </div>
+
+                <div class="reward-card">
+                  <div class="reward-icon">😜</div>
+                  <h4 class="reward-title">Jokes Sync Voucher</h4>
+                  <p class="reward-desc">Redeemable for 10 awful jokes when you are feeling sad to make you laugh again.</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       PROOF ARCHIVE LOCK MODAL
+       ========================================================================== -->
+  <div class="letter-overlay" id="proof-lock-modal" style="display: none;">
+    <div class="letter-modal" style="max-width: 400px; height: auto; text-align: center;">
+      <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent-primary); margin-bottom: 12px;">Bohot jaldi ho rahi h !</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Please enter the passcode to access the Proof files.</p>
+      
+      <div style="margin-bottom: 20px;">
+        <input type="password" id="proof-pass-input" placeholder="Enter Code..." maxlength="4" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.4); text-align: center; font-size: 1.2rem; font-family: var(--font-body); outline: none; color: var(--text-main);">
+        <div id="proof-lock-error" style="color: var(--accent-secondary); font-size: 0.8rem; margin-top: 8px; min-height: 15px;"></div>
+      </div>
+      
+      <div style="display: flex; gap: 10px;">
+        <button class="welcome-btn" id="btn-proof-unlock" style="flex: 1; padding: 10px 0; font-size: 0.9rem;">Unlock</button>
+        <button class="welcome-btn" id="btn-proof-cancel" style="flex: 1; padding: 10px 0; font-size: 0.9rem; background: transparent; border: 1px solid var(--card-border); color: var(--text-main);">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="music_data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
