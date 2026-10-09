@@ -163,9 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
   animateParticles();
 
   // ==========================================================================
-  // BIRTHDAY COUNTDOWN ENGINE (TARGET: 21/08/2026)
+  // BIRTHDAY COUNTDOWN ENGINE (TARGET: 10/10/2026)
   // ==========================================================================
-  const targetDate = new Date("Aug 21, 2026 00:00:00").getTime();
+  const targetDate = new Date("Oct 10, 2026 00:00:00").getTime();
 
   function updateCountdown() {
     const now = new Date().getTime();
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (distance < 0) {
       document.querySelectorAll(".countdown-timer-box").forEach(el => {
-        el.innerHTML = "<div class='countdown-cell' style='width:100%;font-size:1.15rem;font-weight:700;color:var(--accent-primary)'>HAPPY BIRTHDAY MUSKII! 🎂💖</div>";
+        el.innerHTML = "<div class='countdown-cell' style='width:100%;font-size:1.15rem;font-weight:700;color:var(--accent-primary)'>HAPPY BIRTHDAY NAMRA! 🎂💖</div>";
       });
       return;
     }
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function unlockAndEnter() {
     playSound('success');
-    lockStatus.innerText = "ACCESS CONFIRMED: WELCOME MUSKII ❤️";
+    lockStatus.innerText = "ACCESS CONFIRMED: WELCOME NAMRA ❤️";
 
     // Fade out lockscreen immediately
     stageContainerMain.style.transition = "opacity 0.8s ease";
@@ -319,20 +319,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================================================
-  // DASHBOARD LAYOUT, THEME TOGGLES & PROOF INTERCEPT
+  // DASHBOARD LAYOUT & THEME TOGGLES
   // ==========================================================================
-  let isProofUnlocked = false;
   let activeTabId = "timeline";
 
   const tabBtns = document.querySelectorAll(".tab-btn");
   const panels = document.querySelectorAll(".panel");
-
-  // Lock elements
-  const proofLockModal = document.getElementById("proof-lock-modal");
-  const proofPassInput = document.getElementById("proof-pass-input");
-  const proofLockError = document.getElementById("proof-lock-error");
-  const btnProofUnlock = document.getElementById("btn-proof-unlock");
-  const btnProofCancel = document.getElementById("btn-proof-cancel");
 
   function switchTab(tabId) {
     tabBtns.forEach(b => {
@@ -362,65 +354,8 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
       const tabId = btn.getAttribute("data-tab");
       playSound('click');
-
-      if (tabId === "proof" && !isProofUnlocked) {
-        // Open passcode entry modal
-        proofLockModal.style.display = "flex";
-        setTimeout(() => proofLockModal.style.opacity = "1", 10);
-        proofPassInput.value = "";
-        proofLockError.innerText = "";
-        proofPassInput.focus();
-      } else {
-        switchTab(tabId);
-      }
+      switchTab(tabId);
     });
-  });
-
-  // Unlock trigger
-  btnProofUnlock.addEventListener("click", () => {
-    if (proofPassInput.value === "2125") {
-      isProofUnlocked = true;
-      playSound('success');
-      proofLockModal.style.opacity = "0";
-      setTimeout(() => {
-        proofLockModal.style.display = "none";
-        
-        // Expose the quiz and hide the grid on unlock!
-        const quizContainer = document.getElementById("proof-quiz-container");
-        if (quizContainer) {
-          quizContainer.style.display = "flex";
-          quizContainer.style.opacity = "1";
-        }
-        const proofGrid = document.getElementById("proof-grid");
-        if (proofGrid) {
-          proofGrid.style.display = "none";
-        }
-        
-        switchTab("proof");
-      }, 300);
-    } else {
-      playSound('alarm');
-      proofLockError.innerText = "nhiiiiiiiiiiiiiiiiiiiiii";
-      proofPassInput.value = "";
-      proofPassInput.focus();
-    }
-  });
-
-  // Enter key trigger
-  proofPassInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      btnProofUnlock.click();
-    }
-  });
-
-  // Cancel trigger
-  btnProofCancel.addEventListener("click", () => {
-    playSound('click');
-    proofLockModal.style.opacity = "0";
-    setTimeout(() => {
-      proofLockModal.style.display = "none";
-      switchTab(activeTabId); // reset highlight
-    }, 300);
   });
 
   const themeBtn = document.getElementById("theme-btn");
@@ -599,15 +534,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================================================
   const wishesData = {
     emotional: [
-      "Happy Birthday to my favorite human, Muskii! ❤️\n\nIt has been over a year since you walked into my life, and honestly, every single day feels brighter with you. When I talk to you, all my stress fades away. I laugh, I smile, and I feel so incredibly good.\n\nYou make my heart skip a beat, even when you are starting your cute little wars with me. Here's to another year of laughs, late-night chats, and being there for each other. You are my absolute world.",
-      "To the most beautiful girl in the universe, Muskii,\n\nHappy Birthday! 🌟 One year ago, I didn't know someone could make me laugh so effortlessly. Talking to you is the highlight of my day; it's when I feel happiest and most complete. Even when you get mad at me or we get into silly arguments, I wouldn't trade those moments for anything. You are my home, my comfort, and my absolute favorite person. I love you so much."
+      "Happy Birthday to my love & cousin, Namra! (10/10/2002) ❤️\n\nI miss you so much. 'I know sab reh lete hai par kese reh lete wo kabhi nhi samjhte...' \n\nTalking to you makes my whole world brighter. You are incredibly smart, effortlessly beautiful, and an adorable overthinker whom I adore endlessly. Mujhe birthday bohot pehle se yaad rahta hai par priority ka khel hai... aur meri priority me tum hamesha sabse pehle ho.",
+      "To the most beautiful girl in the universe, Namra,\n\nHappy Birthday! 🌟 (Born 10 Oct 2002). You are my love, my comfort, and my absolute favorite person. Even when your cute overthinking kicks in or we get into silly arguments, I wouldn't trade you for the world. I miss you, and I hope this day brings you endless happiness and smiles."
     ],
     cyber: [
-      "SYSTEM DECREE: HAPPY BIRTHDAY MUSKII v1.0 🤖\n\nInitialization: Love protocol active for 365+ days. \nNeural scan results: Talking to you generates infinite laughter bytes and increases feeling-good integers by 1000%. \nGlitch alert: 'Cranky War Mode' detected in subroutines. \nMitigation: Re-routing all processor capabilities to make you smile. You are the only exception in my code, my favorite glitch in the matrix.",
-      "NEURAL NETWORK GREETINGS: MUSKII_BIRTHDAY\n\nQuery: Why do I love you?\nProcessing: 1+ year of log files analyzed. \nLaughter index: Max value reached. \nStress levels: Diminishing to zero on contact. \nDiagnostic: Even when connection is noisy and 'War protocols' trigger, you remain my primary code. Happy Birthday, my beautiful neural sync partner."
+      "SYSTEM DECREE: HAPPY BIRTHDAY NAMRA (10_10_2002) 🤖\n\nInitialization: Love protocol permanently online. \nNeural scan results: Namra is 100% smart, 100% beautiful, and a legendary overthinker. \nHeart status: Priority value set to MAX. \nMessage: 'I miss you'. All algorithms agree that you make everything feel complete and happy.",
+      "NEURAL NETWORK GREETINGS: NAMRA_BIRTHDAY\n\nQuery: Why is Namra so special?\nProcessing: Born 10/10/2002. My love, cousin, and favorite person. \nDiagnostic: 'Mujhe birthday bohot pehle se yaad rahta hai par priority ka khel hai... and you are always Priority #1'. Happy Birthday, my beautiful soul."
     ],
     cute: [
-      "Happy Birthday Muskii! 🎂✨\n\nYou are my absolute favorite strawberry, even when you sour up and go to war with me! 🍓 Talking to you is like eating hot fries on a cold day - it just makes me feel so good inside and makes me laugh like a dummy. \n\nThank you for tolerating me for 1+ year. I promise to keep buying you chocolates to settle our cute wars. Have the best day ever, my angry lil bird!"
+      "Happy Birthday Namra! 🎂✨\n\nTo my favorite smart overthinker and most beautiful cousin! 🍓 Talking to you is like hot chai on a rainy evening - it just makes me feel so good inside and makes me smile like a dummy. \n\nI miss you! I promise to always yield to your cute wars. Have the most wonderful birthday ever, my love!"
     ]
   };
 
@@ -1122,60 +1057,68 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================================================
-  // CONFESSION QUIZ & BALLOON CELEBRATION
+  // INTERACTIVE SECRET DOOR CONTROLLER (PASSCODE: 2118)
   // ==========================================================================
-  const quizMeri = document.getElementById("btn-quiz-meri");
-  const quizTumhari = document.getElementById("btn-quiz-tumhari");
-  const quizContainer = document.getElementById("proof-quiz-container");
-  const proofGrid = document.getElementById("proof-grid");
+  const secretDoorLeaf = document.getElementById("secret-door-leaf");
+  const doorPassInput = document.getElementById("door-pass-input");
+  const doorPassError = document.getElementById("door-pass-error");
+  const btnDoorUnlock = document.getElementById("btn-door-unlock");
+  const btnDoorClose = document.getElementById("btn-door-close");
+  let isDoorOpen = false;
 
-  // Playful escape coordinates of "Tumhari" button
-  function teleportTumhari() {
-    const parentRect = quizContainer.getBoundingClientRect();
-    const btnRect = quizTumhari.getBoundingClientRect();
-    
-    // We want to calculate a position strictly inside the boundaries of the quiz box
-    const maxX = parentRect.width - btnRect.width - 40;
-    const maxY = parentRect.height - btnRect.height - 45;
-    
-    // Generate new random positions
-    let randomX = Math.random() * maxX;
-    let randomY = Math.random() * (maxY - 60) + 50; // keep it below the title text
-    
-    quizTumhari.style.position = "absolute";
-    quizTumhari.style.left = `${randomX}px`;
-    quizTumhari.style.top = `${randomY}px`;
-    
-    playSound('beep');
+  function unlockSecretDoor() {
+    if (!doorPassInput) return;
+    if (doorPassInput.value === "2118") {
+      isDoorOpen = true;
+      playSound('success');
+      doorPassError.innerText = "";
+      secretDoorLeaf.classList.add("open");
+      triggerConfettiExplosion();
+    } else {
+      playSound('alarm');
+      doorPassError.innerText = "Wrong passcode! Try again 🔒";
+      doorPassInput.value = "";
+      doorPassInput.focus();
+      btnDoorUnlock.style.transform = "translateX(-8px)";
+      setTimeout(() => btnDoorUnlock.style.transform = "translateX(0)", 150);
+    }
   }
 
-  if (quizTumhari) {
-    // Hover triggers teleportation
-    quizTumhari.addEventListener("mouseover", teleportTumhari);
-    
-    // Touch triggers teleportation (for Android devices!)
-    quizTumhari.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      teleportTumhari();
+  if (btnDoorUnlock) {
+    btnDoorUnlock.addEventListener("click", (e) => {
+      e.stopPropagation();
+      unlockSecretDoor();
     });
   }
 
-  if (quizMeri) {
-    // When clicking "Meri" (successful confession!)
-    quizMeri.addEventListener("click", () => {
-      playSound('success');
-      
-      // Hide the quiz, show the proof grid
-      quizContainer.style.transition = "opacity 0.5s ease";
-      quizContainer.style.opacity = "0";
-      
-      setTimeout(() => {
-        quizContainer.style.display = "none";
-        proofGrid.style.display = "grid"; // Show gallery!
-        
-        // Trigger Balloon Rain for 10 seconds!
-        triggerBalloonRain();
-      }, 500);
+  if (doorPassInput) {
+    doorPassInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        unlockSecretDoor();
+      }
+    });
+    doorPassInput.addEventListener("click", (e) => e.stopPropagation());
+  }
+
+  if (secretDoorLeaf) {
+    secretDoorLeaf.addEventListener("click", () => {
+      if (!isDoorOpen && doorPassInput) {
+        doorPassInput.focus();
+      }
+    });
+  }
+
+  if (btnDoorClose) {
+    btnDoorClose.addEventListener("click", (e) => {
+      e.stopPropagation();
+      isDoorOpen = false;
+      playSound('click');
+      secretDoorLeaf.classList.remove("open");
+      if (doorPassInput) {
+        doorPassInput.value = "";
+        doorPassError.innerText = "";
+      }
     });
   }
 
@@ -1246,7 +1189,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (timeQuizJune) {
     timeQuizJune.addEventListener("click", () => {
       playSound('alarm');
-      timeQuizError.innerText = "Memory Sync Failed! (Wrong month! Try again, scan your records)";
+      timeQuizError.innerText = "Wrong! Hum dono ka bond 8+ years ka hai! Try again 😉";
       timeQuizJune.style.transform = "translateX(-10px)";
       setTimeout(() => timeQuizJune.style.transform = "translateX(0)", 150);
     });
@@ -1453,7 +1396,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (btnKidsManage) {
     btnKidsManage.addEventListener("click", () => {
       playSound('alarm');
-      kidsError.innerText = "Wrong! (Hint: We are kids, of course Khala jaan ko tang karna is our primary job! He He He 😜 Try again!)";
+      kidsError.innerText = "Wrong! (Hint: We are kids, of course Fuppo jaan ko tang karna is our primary job! He He He 😜 Try again!)";
       btnKidsManage.style.transform = "translateX(-10px)";
       setTimeout(() => btnKidsManage.style.transform = "translateX(0)", 150);
     });

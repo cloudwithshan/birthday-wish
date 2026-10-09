@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For Muskii // Birthday Portfolio & Memory Hub</title>
-  <meta name="description" content="A warm, romantic birthday portfolio handcrafted for Muskii. Chronicling 1+ year of love, laughs, and playful combat.">
+  <title>For Namra // Birthday Portfolio & Memory Hub</title>
+  <meta name="description" content="A warm, romantic birthday portfolio handcrafted for Namra (10/10/2002). Chronicling love, laughs, and heartfelt memories.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,48 +18,55 @@
   <!-- Birthday Greeting Overlay (Triggers with Fireworks) -->
   <div id="birthday-greeting-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999999; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.55); pointer-events: none; opacity: 0; transition: opacity 0.8s ease;">
     <div style="text-align: center; color: #fff; padding: 30px; border-radius: 24px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 40px rgba(255, 107, 129, 0.4); max-width: 600px; width: 90%;">
-      <h1 style="font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 700; margin-bottom: 12px; color: #fff; text-shadow: 0 0 20px rgba(255,107,129,0.8); line-height: 1.2;">Happy Birthday Sana 🎂</h1>
-      <p style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-style: italic; color: #ffb8b8; text-shadow: 0 0 10px rgba(0,0,0,0.5); font-weight: 500; margin: 0;">from Soni Baji and Shuaib Bhai ♥</p>
+      <h1 style="font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 700; margin-bottom: 12px; color: #fff; text-shadow: 0 0 20px rgba(255,107,129,0.8); line-height: 1.2;">Happy Birthday Namra 🎂</h1>
+      <p style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-style: italic; color: #ffb8b8; text-shadow: 0 0 10px rgba(0,0,0,0.5); font-weight: 500; margin: 0;">Bhuri ki taraf se bhi Happy Birthday wish ♥</p>
     </div>
   </div>
 
-  <!-- Areeb & Zuni Kids Surprise Overlay Gate (Launches after fireworks end) -->
+  <!-- Annu, Azzu & Zikku Kids Surprise Overlay Gate (Launches after fireworks end) -->
   <div id="kids-surprise-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 999999; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.65); opacity: 0; transition: opacity 0.8s ease;">
     
     <!-- 1. The Quiz Box -->
     <div id="kids-quiz-box" style="text-align: center; color: #fff; padding: clamp(15px, 4vw, 30px); border-radius: 24px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 40px rgba(0,0,0,0.3); max-width: 500px; width: 90%; box-sizing: border-box; overflow-y: auto; max-height: 92vh;">
-      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 4.5vw, 1.9rem); line-height: 1.35; margin-bottom: 15px; color: #fff; white-space: normal; word-break: break-word;">Areeb & Zuni's Golden Rule test 🧸</h2>
-      <p style="font-size: clamp(0.9rem, 3.5vw, 1.05rem); color: #ffe3e3; margin-bottom: 20px; font-weight: 500; line-height: 1.45;">Khala ke pyaare Areeb aur Zuni ka secret message unlock karne ke liye sahi option select karein:<br><strong>Life ka sabse bada sach kya hai?</strong></p>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 4.5vw, 1.9rem); line-height: 1.35; margin-bottom: 15px; color: #fff; white-space: normal; word-break: break-word;">Annu, Azzu & Zikku's Golden Rule test 🧸</h2>
+      <p style="font-size: clamp(0.9rem, 3.5vw, 1.05rem); color: #ffe3e3; margin-bottom: 20px; font-weight: 500; line-height: 1.45;">Fuppo ke pyaare Annu, Azzu aur Zikku ka secret message unlock karne ke liye sahi option select karein:<br><strong>Life ka sabse bada sach kya hai?</strong></p>
       
       <div id="kids-quiz-error" style="color: var(--accent-secondary); font-size: 0.9rem; margin-bottom: 15px; min-height: 20px; font-weight: 600;"></div>
       
       <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
-        <button class="welcome-btn" id="btn-kids-quiz-tang" style="padding: 12px 0; font-size: 1rem; width: 100%; cursor: pointer;">Khala jaan ko tang karna! 😜</button>
-        <button class="welcome-btn" id="btn-kids-quiz-manage" style="padding: 12px 0; font-size: 1rem; width: 100%; cursor: pointer;">Khala jaan, Manage karna hi Life hai! 🌸</button>
+        <button class="welcome-btn" id="btn-kids-quiz-tang" style="padding: 12px 0; font-size: 1rem; width: 100%; cursor: pointer;">Fuppo jaan ko tang karna! 😜</button>
+        <button class="welcome-btn" id="btn-kids-quiz-manage" style="padding: 12px 0; font-size: 1rem; width: 100%; cursor: pointer;">Fuppo jaan, Manage karna hi Life hai! 🌸</button>
       </div>
     </div>
 
     <!-- 2. The Wishes Card (Hidden initially, shown on correct answer) -->
     <div id="kids-wishes-box" style="display: none; text-align: center; color: #fff; padding: clamp(15px, 4vw, 30px); border-radius: 24px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 10px 40px rgba(255, 107, 129, 0.35); max-width: 550px; width: 90%; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; overflow-y: auto; max-height: 92vh;">
-      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 700; margin-bottom: 20px; color: #fff; text-shadow: 0 0 15px rgba(255,107,129,0.8); border-bottom: 2px solid rgba(255,255,255,0.15); padding-bottom: 12px; width: 100%; white-space: normal; word-break: break-word; text-align: center;">Surprise from Areeb & Zuni!</h2>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 700; margin-bottom: 20px; color: #fff; text-shadow: 0 0 15px rgba(255,107,129,0.8); border-bottom: 2px solid rgba(255,255,255,0.15); padding-bottom: 12px; width: 100%; white-space: normal; word-break: break-word; text-align: center;">Surprise from Annu, Azzu & Zikku!</h2>
       
-      <!-- Kids Photos Grid -->
-      <div style="display: flex; gap: clamp(10px, 3vw, 20px); justify-content: center; margin-bottom: 20px; width: 100%;">
-        <div style="flex: 1; max-width: 160px; background: #fff; padding: 6px 6px 12px 6px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.25); text-align: center;">
-          <img src="images/areeb.png" alt="Areeb" style="width: 100%; height: auto; display: block; border-radius: 8px; object-fit: cover;">
-          <p style="margin-top: 8px; font-weight: 700; font-size: clamp(0.9rem, 3vw, 1.05rem); color: #222; margin-bottom: 0;">Areeb 👦</p>
+      <!-- Kids Trio Cards -->
+      <div style="display: flex; gap: clamp(8px, 2.5vw, 15px); justify-content: center; margin-bottom: 20px; width: 100%;">
+        <div style="flex: 1; max-width: 130px; background: #fff; padding: 12px 6px; border-radius: 14px; box-shadow: 0 6px 16px rgba(0,0,0,0.25); text-align: center;">
+          <div style="font-size: 2.2rem; margin-bottom: 4px;">👦</div>
+          <p style="margin: 0; font-weight: 700; font-size: clamp(0.85rem, 3vw, 1rem); color: #222;">Annu</p>
+          <span style="font-size: 0.72rem; color: #777;">Fuppo's Champ</span>
         </div>
-        <div style="flex: 1; max-width: 160px; background: #fff; padding: 6px 6px 12px 6px; border-radius: 12px; box-shadow: 0 6px 16px rgba(0,0,0,0.25); text-align: center;">
-          <img src="images/zuni.png" alt="Zuni" style="width: 100%; height: auto; display: block; border-radius: 8px; object-fit: cover;">
-          <p style="margin-top: 8px; font-weight: 700; font-size: clamp(0.9rem, 3vw, 1.05rem); color: #222; margin-bottom: 0;">Zuni 👧</p>
+        <div style="flex: 1; max-width: 130px; background: #fff; padding: 12px 6px; border-radius: 14px; box-shadow: 0 6px 16px rgba(0,0,0,0.25); text-align: center;">
+          <div style="font-size: 2.2rem; margin-bottom: 4px;">🧒</div>
+          <p style="margin: 0; font-weight: 700; font-size: clamp(0.85rem, 3vw, 1rem); color: #222;">Azzu</p>
+          <span style="font-size: 0.72rem; color: #777;">Fuppo's Joy</span>
+        </div>
+        <div style="flex: 1; max-width: 130px; background: #fff; padding: 12px 6px; border-radius: 14px; box-shadow: 0 6px 16px rgba(0,0,0,0.25); text-align: center;">
+          <div style="font-size: 2.2rem; margin-bottom: 4px;">👶</div>
+          <p style="margin: 0; font-weight: 700; font-size: clamp(0.85rem, 3vw, 1rem); color: #222;">Zikku</p>
+          <span style="font-size: 0.72rem; color: #777;">Fuppo's Little One</span>
         </div>
       </div>
       
       <!-- Message -->
       <div style="background: rgba(0,0,0,0.35); padding: clamp(12px, 3vw, 20px); border-radius: 16px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); line-height: 1.5; font-size: clamp(0.85rem, 3vw, 1.0rem); width: 100%; box-sizing: border-box;">
-        <p style="font-weight: 700; color: #ffb8b8; font-size: clamp(0.95rem, 3vw, 1.1rem); margin-bottom: 6px;">" Khaala jaan Hamari Taraf se bhi Happy Birthday ! "</p>
+        <p style="font-weight: 700; color: #ffb8b8; font-size: clamp(0.95rem, 3vw, 1.1rem); margin-bottom: 6px;">" Fuppo jaan Hamari Taraf se bhi Happy Birthday ! "</p>
         <p style="color: #fff; font-style: italic; font-weight: 500;">
-          " or Khala jaan Manage Karna hi Life hai , Hame bhi kariye or , U know Very welll , He He He 😜 "
+          " or Fuppo jaan Manage Karna hi Life hai , Hame bhi kariye or , U know Very welll , He He He 😜 "
         </p>
       </div>
       
@@ -73,11 +80,11 @@
        ========================================================================== -->
   <div class="welcome-overlay" id="welcome-overlay">
     <div class="welcome-card">
-      <svg class="welcome-card-icon" viewBox="0 0 24 24">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-      </svg>
-      <h2>You have a birthday surprise!</h2>
-      <p>I have compiled a special surprise website for your birthday. Tap below to open it and start the music!</p>
+      <div style="margin: 0 auto 16px auto; width: 110px; height: 110px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent-primary); box-shadow: 0 0 25px rgba(255,107,129,0.5);">
+        <img src="images/namra.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" alt="Namra">
+      </div>
+      <h2>A Special Birthday Surprise!</h2>
+      <p>A handcrafted portfolio created with all my love for <strong>Namra</strong>. Tap below to begin!</p>
       <button class="welcome-btn" id="welcome-btn">Open Surprise 💌</button>
     </div>
   </div>
@@ -89,7 +96,10 @@
     
     <div class="stage active" id="stage-lock">
       <div class="lock-header">
-        <h1>For Muskii's Eyes Only 💖</h1>
+        <div style="margin: 0 auto 14px auto; width: 90px; height: 90px; border-radius: 50%; overflow: hidden; border: 3px solid var(--accent-primary); box-shadow: 0 0 20px rgba(255,107,129,0.6);">
+          <img src="images/namra.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;" alt="Namra">
+        </div>
+        <h1>For Namra's Eyes Only 💖</h1>
         <p>A SPECIAL SURPRISE // ENTER CODE TO UNLOCK</p>
       </div>
 
@@ -159,7 +169,7 @@
         <svg style="width: 26px; height: 26px; fill: var(--accent-primary);" viewBox="0 0 24 24">
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
         </svg>
-        <span>Happy Birthday Muskii! 🌸</span>
+        <span>Happy Birthday Namra! 🌸</span>
       </div>
       
       <div class="nav-status">SURPRISE SYSTEM ONLINE</div>
@@ -205,9 +215,9 @@
           <svg viewBox="0 0 24 24"><path d="M12 11.55C9.64 9.35 6.48 8 3 8v11c3.48 0 6.64 1.35 9 3.55 2.36-2.2 5.52-3.55 9-3.55V8c-3.48 0-6.64 1.35-9 3.55zM12 2C9.48 2 7.02 2.81 5 4.35V2H3v10h10V10H7.03C8.42 8.79 10.13 8 12 8c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8H2c0 5.52 4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/></svg>
           <span>Memory Hub</span>
         </button>
-        <button class="tab-btn" data-tab="proof">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>"Any Proof?"</span>
+        <button class="tab-btn" data-tab="secret-door">
+          <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.1 0-2 .9-2 2v18h18V4c0-1.1-.9-2-2-2zm-7 10c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5 8H7V4h10v16z"/></svg>
+          <span>Secret Door 🚪</span>
         </button>
         <button class="tab-btn" data-tab="music">
           <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
@@ -231,7 +241,7 @@
           <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
             <div>
               <h2>Our Memory Hub</h2>
-              <p>A beautiful walk down memory lane: July 2025 to Present (1+ Year)</p>
+              <p>A beautiful walk down memory lane: 2018 to 2026 (8+ Years of Memories & Bond)</p>
             </div>
             
             <!-- Dashboard Floating Countdown Display -->
@@ -254,122 +264,176 @@
           <!-- Memory Hub Quiz Gate -->
           <div id="timeline-quiz-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; padding: 35px 20px; background: rgba(255, 255, 255, 0.45); border-radius: 20px; border: 1px solid var(--card-border); max-width: 480px; margin: 40px auto; position: relative;">
             <h3 style="font-family: var(--font-heading); font-size: 1.7rem; color: var(--accent-primary); margin-bottom: 12px;">Timeline Sync Auth 📅</h3>
-            <p style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 25px; font-weight: 600; line-height: 1.5;">First, align your memory cores! In which month of 2025 did we start talking?</p>
+            <p style="font-size: 1.05rem; color: var(--text-main); margin-bottom: 25px; font-weight: 600; line-height: 1.5;">First, align your memory cores! Hum dono ka bond kitne saalon se chala aa raha hai?</p>
             <div id="timeline-quiz-error" style="color: var(--accent-secondary); font-size: 0.85rem; margin-bottom: 15px; min-height: 18px; font-weight: 500;"></div>
             <div style="display: flex; gap: 15px; justify-content: center; width: 100%;">
-              <button class="welcome-btn" id="btn-quiz-time-june" style="padding: 10px 25px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">June 2025</button>
-              <button class="welcome-btn" id="btn-quiz-time-july" style="padding: 10px 25px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">July 2025</button>
+              <button class="welcome-btn" id="btn-quiz-time-june" style="padding: 10px 25px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">Sirf 2-3 Saal</button>
+              <button class="welcome-btn" id="btn-quiz-time-july" style="padding: 10px 25px; font-size: 0.95rem; cursor: pointer; border-radius: 25px;">8+ Years (Forever) ♥</button>
             </div>
           </div>
           
           <div class="timeline-hub" id="timeline-hub" style="display: none;">
+            
+            <!-- Namra Special Spotlight Hero Card -->
+            <div class="birthday-hero-card" style="display: flex; gap: 20px; align-items: center; background: rgba(255,255,255,0.55); backdrop-filter: blur(10px); border: 1px solid var(--card-border); border-radius: 20px; padding: 22px; margin-bottom: 30px; box-shadow: 0 8px 25px rgba(255,107,129,0.15); flex-wrap: wrap;">
+              <div style="width: 140px; height: 175px; flex-shrink: 0; border-radius: 16px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
+                <img src="images/namra.jpg" alt="Namra" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+              </div>
+              <div style="flex: 1; min-width: 220px;">
+                <span style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-primary); font-weight: 700;">Birthday Spotlight // 10 Oct 2002</span>
+                <h2 style="font-family: var(--font-heading); font-size: 1.85rem; margin: 4px 0 8px 0; color: var(--text-main);">Namra ✨</h2>
+                <p style="margin: 0 0 12px 0; font-size: 0.95rem; line-height: 1.55; color: var(--text-main);">
+                  She is my love & also my cousin. Incredibly smart, effortlessly beautiful, and an adorable overthinker whom I adore endlessly. 💕
+                </p>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <span style="background: rgba(255,107,129,0.15); color: var(--accent-primary); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">#MyLove</span>
+                  <span style="background: rgba(255,107,129,0.15); color: var(--accent-primary); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">#Beautiful</span>
+                  <span style="background: rgba(255,107,129,0.15); color: var(--accent-primary); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">#SmartOverthinker</span>
+                  <span style="background: rgba(255,107,129,0.15); color: var(--accent-primary); padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;">#8PlusYearsBond</span>
+                </div>
+              </div>
+            </div>
+
             <div class="timeline-line-vertical"></div>
             
             <div class="timeline-node">
               <div class="timeline-dot-marker"></div>
               <div class="timeline-card">
-                <div class="timeline-date">JULY 2025</div>
-                <h3>The Day We Connected</h3>
-                <p>The day you walked into my life and updated my whole world. From our very first chat, you had me smiling like crazy. Talking to you instantly made me feel so good and happy. This is where it all started.</p>
+                <div class="timeline-date">10 OCTOBER 2002</div>
+                <h3>The Day Namra Was Born 🌸</h3>
+                <p>The universe gave life to the smartest, most beautiful girl. Born on 10/10/2002, who knew that one day you would become my love, my comfort, my favorite cousin, and my entire world.</p>
               </div>
             </div>
 
             <div class="timeline-node">
               <div class="timeline-dot-marker"></div>
               <div class="timeline-card">
-                <div class="timeline-date">OCTOBER 2025</div>
-                <h3>The First Cute War</h3>
-                <p>The day I realized that you are sometimes 'at war' with me! You get cranky, you start cute mini-battles, but honestly? It is the best thing ever. I love yielding to your wars, as long as it makes you laugh at the end.</p>
+                <div class="timeline-date">2018 — YEAR 1</div>
+                <h3>The Spark of Our Bond</h3>
+                <p>Where our special story began taking deep roots. Beyond just cousins, we started talking, laughing at family functions, and discovering how effortless it was to connect with each other. The foundation of 8+ years.</p>
               </div>
             </div>
 
             <div class="timeline-node">
               <div class="timeline-dot-marker"></div>
               <div class="timeline-card">
-                <div class="timeline-date">FEBRUARY 2026</div>
-                <h3>1+ Year Threshold</h3>
-                <p>Over a full year of late-night calls, endless laughter loops, and sharing jokes. You have become my absolute favorite routine, my safe space, and the person who makes me feel best.</p>
+                <div class="timeline-date">2020 — YEAR 3</div>
+                <h3>Growing Inseparable</h3>
+                <p>Through lockdowns and endless texting, sharing every little thought. You quickly became my comfort person—the one notification that instantly made everything feel peaceful and happy.</p>
               </div>
             </div>
 
             <div class="timeline-node">
               <div class="timeline-dot-marker"></div>
               <div class="timeline-card">
-                <div class="timeline-date">TODAY</div>
-                <h3>Happy Birthday, Muskii! 🎂</h3>
-                <p>Your special day! A permanent drive of love is loaded. Today is all about keeping you happy, making you laugh, and celebrating the wonderful girl you are. No cute wars allowed today (unless you want to!).</p>
+                <div class="timeline-date">2022 — YEAR 5</div>
+                <h3>Your 20th Milestone & Deep Feelings</h3>
+                <p>Watching you grow into such a smart, elegant, and stunning woman. That charming overthinking habit of yours, your bright laughter, and realizing how deeply you held my heart.</p>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="timeline-dot-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-date">2024 — YEAR 7</div>
+                <h3>Through Every Cute War & Mood</h3>
+                <p>Seven years of memories, inside jokes, and silly battles! Even in full cranky war mode, I would gladly yield every time. 'I know sab reh lete hai par kese reh lete wo kabhi nhi samjhte...'</p>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="timeline-dot-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-date">2025 - 2026 — 8+ YEARS</div>
+                <h3>8+ Years Milestone: Unbreakable Bond</h3>
+                <p>Over eight full years of being each other's person. Life shifted, years passed, but our bond only deepened. You remained the constant rhythm in my life.</p>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="timeline-dot-marker"></div>
+              <div class="timeline-card">
+                <div class="timeline-date">TODAY — 10 OCTOBER 2026</div>
+                <h3>Happy 24th Birthday, Namra! 🎂</h3>
+                <p>Celebrating 8+ years of us and your special 24th birthday! Mujhe birthday bohot pehle se yaad rahta hai par priority ka khel hai... aur meri priority me tum hamesha sabse upar ho. I miss you more than anything, my love! ❤️</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- PANEL 2: "ANY PROOF?" PHOTO ARCHIVE -->
-        <section class="panel" id="panel-proof">
+        <!-- PANEL 2: THE SECRET DOOR -->
+        <section class="panel" id="panel-secret-door">
           <div class="panel-header">
-            <h2>The "Any Proof?" Archive</h2>
-            <p>Every time she asks "Any proof?", here is the official evidence files.</p>
+            <h2>The Secret Door 🗝️</h2>
+            <p>A private gateway to unspoken words. Tap the door to unlock.</p>
           </div>
-          <!-- Playful Confession Quiz before opening proof -->
-          <div id="proof-quiz-container" style="display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 280px; text-align: center; padding: 30px 20px; background: rgba(255, 255, 255, 0.45); border-radius: 20px; border: 1px solid var(--card-border); max-width: 480px; margin: 40px auto; position: relative;">
-            <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--accent-primary); margin-bottom: 12px;">A Little Confession First... 🤔</h3>
-            <p style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 30px; font-weight: 600; line-height: 1.5;">Hamesha galti kiski hoti hai?</p>
-            
-            <div class="quiz-buttons-group" style="display: flex; gap: 20px; justify-content: center; width: 100%; position: relative; height: 50px;">
-              <button class="welcome-btn" id="btn-quiz-meri" style="padding: 10px 30px; font-size: 0.95rem; cursor: pointer; border-radius: 25px; transition: transform 0.2s;">Meri</button>
-              <button class="welcome-btn" id="btn-quiz-tumhari" style="padding: 10px 30px; font-size: 0.95rem; cursor: pointer; border-radius: 25px; background: transparent; border: 1px solid var(--card-border); color: var(--text-main); position: absolute; left: 55%; transition: all 0.2s ease;">Tumhari</button>
-            </div>
-          </div>
-          
-          <div class="proof-grid" id="proof-grid" style="display: none;">
-            
-            <!-- Proof 1 -->
-            <div class="proof-card">
-              <div class="proof-img-wrapper">
-                <img class="proof-img" src="images/fear_proof.jpg" alt="Proof of Fear">
-              </div>
-              <div class="proof-details">
-                <span class="proof-tag">Exhibit A // State of Fear</span>
-                <h3 class="proof-title">1. Proof of keeping in a state of fear</h3>
-                <p class="proof-desc">Exhibit A exhibits severe signs of psychological threat! Under constant monitoring and cute surveillance. Even at dinner, I must maintain absolute compliance and be on my best behavior, or face the warning bells of an immediate Cute War outbreak.</p>
-              </div>
-            </div>
 
-            <!-- Proof 2 -->
-            <div class="proof-card">
-              <div class="proof-img-wrapper">
-                <img class="proof-img" src="images/love_proof.jpg" alt="Proof of Love">
-              </div>
-              <div class="proof-details">
-                <span class="proof-tag">Exhibit B // Affection Sync</span>
-                <h3 class="proof-title">2. Proof of love from my side</h3>
-                <p class="proof-desc">Exhibit B displays absolute love and comfort. That soft chin-hold and touch that instantly recharges my happiness indicator to 100%. When she touches my face, all my worries disappear, and I feel completely at peace.</p>
+          <div class="secret-door-stage">
+            <div class="secret-door-wrapper">
+              <div class="secret-door-frame">
+                
+                <!-- The Outer Interactive Door Leaf with Passcode Lock -->
+                <div class="secret-door-leaf" id="secret-door-leaf">
+                  <div class="door-arch-design">
+                    <div class="door-knob">🗝️</div>
+                    <h3 style="font-family: var(--font-heading); font-size: clamp(1.4rem, 4vw, 1.85rem); color: #fff; margin-bottom: 6px; text-shadow: 0 0 15px rgba(255,215,0,0.6); text-align: center;">The Secret Door</h3>
+                    <p style="font-size: 0.95rem; color: #ffb8b8; margin-bottom: 18px; font-weight: 500; text-align: center;">Enter secret passcode to unlock</p>
+                    
+                    <div style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 260px;">
+                      <input type="password" id="door-pass-input" placeholder="Enter PIN..." maxlength="4" style="width: 100%; padding: 12px; border-radius: 12px; border: 2px solid rgba(255,215,0,0.5); background: rgba(0,0,0,0.5); text-align: center; font-size: 1.3rem; letter-spacing: 6px; font-family: monospace; outline: none; color: #ffd700; box-shadow: inset 0 2px 6px rgba(0,0,0,0.6); box-sizing: border-box;">
+                      
+                      <div id="door-pass-error" style="color: #ff6b81; font-size: 0.85rem; margin-top: 8px; min-height: 20px; font-weight: 600; text-shadow: 0 0 8px rgba(0,0,0,0.8);"></div>
+                      
+                      <button class="welcome-btn" id="btn-door-unlock" style="width: 100%; padding: 12px 0; font-size: 1rem; border-radius: 20px; background: linear-gradient(135deg, #ffd700, #ff8c00); color: #222; font-weight: 700; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(255,215,0,0.4); margin-top: 5px;">
+                        UNLOCK & OPEN 🚪
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Revealed Letter Inside The Door -->
+                <div class="door-content-revealed">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed rgba(255,107,129,0.3); padding-bottom: 12px; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="font-size: 1.3rem;">💌</span>
+                      <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-primary); letter-spacing: 1.5px; text-transform: uppercase;">A Secret Note Just For You</span>
+                    </div>
+                    <button class="welcome-btn" id="btn-door-close" style="padding: 6px 16px; font-size: 0.85rem; border-radius: 15px; cursor: pointer; background: transparent; border: 1px solid var(--card-border); color: var(--text-main);">Close Door 🚪</button>
+                  </div>
+
+                  <h3 style="font-family: var(--font-heading); font-size: clamp(1.4rem, 4vw, 1.75rem); color: var(--accent-primary); margin-bottom: 16px;">Suno... ❤️</h3>
+
+                  <div style="font-size: clamp(0.95rem, 2.5vw, 1.05rem); line-height: 1.8; color: var(--text-main); font-weight: 500;">
+                    <p style="margin-bottom: 16px; background: rgba(255,107,129,0.06); padding: 10px 14px; border-radius: 10px; border-left: 3px solid var(--accent-primary);">
+                      " Suno mai janta hu tum ab mere sath nhi ho , or mujhe ye khalta hai , tum baat krte hai acha lagta hai  bss priority hi to change hui hai to kya hua . "
+                    </p>
+
+                    <p style="margin-bottom: 16px;">
+                      " Mai yahi dua karta hu tu khush rahe kyuki i know tune bohot kuch saha hai life mai or agr kuch issu aata hai to mai hu na , "
+                    </p>
+
+                    <p style="margin-bottom: 16px;">
+                      " baaki tune bohot kuch sikhaya hai mujhe also sbr and face situations also handle conditions , "
+                    </p>
+
+                    <div style="background: rgba(255, 107, 129, 0.12); border-left: 4px solid var(--accent-primary); padding: 12px 16px; border-radius: 10px; margin: 18px 0;">
+                      <p style="margin: 0; font-weight: 700; color: var(--accent-primary); font-size: clamp(1rem, 2.8vw, 1.15rem); font-style: italic;">
+                        " jiyada bane mat ab chal , isse jiyada kaddu bole mera 😜 "
+                      </p>
+                    </div>
+
+                    <p style="margin-top: 18px; font-weight: 700; color: var(--accent-primary); font-size: clamp(1.05rem, 3vw, 1.2rem);">
+                      " and thank you for all about me ❤️ "
+                    </p>
+                  </div>
+
+                  <div style="margin-top: 25px; text-align: right; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 14px;">
+                    <strong style="color: var(--accent-primary); font-size: 1.1rem;">Your Favourite Person ✨</strong>
+                  </div>
+                </div>
+
               </div>
             </div>
-
-            <!-- Proof 3 -->
-            <div class="proof-card">
-              <div class="proof-img-wrapper">
-                <img class="proof-img" src="images/beaten_proof.jpg" alt="Beaten Proof">
-              </div>
-              <div class="proof-details">
-                <span class="proof-tag">Exhibit C // Playful Defeat</span>
-                <h3 class="proof-title">3. She's beaten proof</h3>
-                <p class="proof-desc">Exhibit C showcases physical exhaustion and playful defeat. The victim is seen resting his chin on his hand after a relentless cute battle in the park, while the perpetrator smiles victoriously next to him, ready for the next round of combat.</p>
-              </div>
-            </div>
-
-            <!-- Proof 4 -->
-            <div class="proof-card">
-              <div class="proof-img-wrapper">
-                <img class="proof-img" src="images/not_innocent_proof.jpg" alt="Not Innocent Proof">
-              </div>
-              <div class="proof-details">
-                <span class="proof-tag">Exhibit D // Innocent Impostor</span>
-                <h3 class="proof-title">4. Make innocent but she's not</h3>
-                <p class="proof-desc">Exhibit D debunks the 'Innocent' claim. She claims to be a quiet, innocent angel, but photographic evidence shows her actively plotting mischievous pranks (and rocking a cute hair-mustache!). Guilty of high-treason mischief, but sentenced to infinite love.</p>
-              </div>
-            </div>
-
           </div>
         </section>
 
@@ -476,9 +540,9 @@
               </div>
               <div class="letter-paper">
                 <div class="letter-preview-text">
-                  Dearest Muskii,
+                  Dearest Namra,
 
-                  It has been over a year since you entered my life, and I still can't believe how lucky I am. Talking to you makes me laugh...
+                  Happy Birthday to the most special girl in my life (10/10/2002)! You are my love, my cousin, my peace, and my favorite overthinker. 1. I miss You... 2. I know sab reh lete hai par kese reh lete wo kabhi nhi samjhte... Click to open letter...
                 </div>
               </div>
             </div>
@@ -502,21 +566,51 @@
 
           <!-- Fullscreen letter modal -->
           <div class="letter-overlay" id="letter-overlay">
-            <div class="letter-modal">
+            <div class="letter-modal" style="max-width: 620px;">
               <button class="close-letter-btn" id="close-letter-btn">×</button>
               <div class="letter-full-content">
-                <strong>Dearest Muskii,</strong>
+                <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 20px; border-bottom: 2px dashed rgba(255,107,129,0.3); padding-bottom: 15px; flex-wrap: wrap;">
+                  <img src="images/namra.jpg" alt="Namra" style="width: 75px; height: 95px; object-fit: cover; object-position: center top; border-radius: 12px; border: 2px solid var(--accent-primary); box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                  <div>
+                    <h2 style="font-family: var(--font-heading); color: var(--accent-primary); margin: 0; font-size: 1.6rem;">Dearest Namra,</h2>
+                    <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600;">10 October 2002 // My Love & Favorite Overthinker 💕</span>
+                  </div>
+                </div>
 
-                Happy Birthday! 🎂💖
+                <p style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 15px;">Happy Birthday to the most special person in my life! 🎂💖</p>
 
-                It has been over a year since you entered my life, and looking back, it's the absolute best thing that has ever happened to me. When I talk to you, I laugh, I feel safe, and I feel incredibly good. You have this magical ability to wash away all my worries with just a single laugh.
+                <p style="line-height: 1.7; margin-bottom: 15px;">
+                  You are my love, my cousin, my comfort, and the person who brings pure happiness to my soul. You are so smart, effortlessly beautiful, and an adorable overthinker whom I adore with all my heart.
+                </p>
 
-                Yes, you go to war with me sometimes. You get cranky, you start cute arguments, and you declare playful combat. But I want you to know—I love your 'War Mode' just as much as your happy mode. It makes us 'us', and I would gladly lose every single cute war to you for the rest of my life, as long as it ends with a smile on your face.
+                <p style="font-weight: 600; margin-bottom: 10px; color: var(--text-main);">
+                  Aaj tumhare birthday par, kuch baatein jo mere dil me hamesha se hain:
+                </p>
 
-                You are my comfort, my favorite notification, and my heart's core. Thank you for a wonderful year, and I hope this birthday brings you all the laughter and happiness you bring to me.
+                <div style="background: rgba(255, 107, 129, 0.08); border-left: 4px solid var(--accent-primary); padding: 12px 18px; border-radius: 8px; margin-bottom: 18px; line-height: 1.6;">
+                  <p style="margin: 0 0 8px 0; font-weight: 600; color: var(--accent-primary); font-size: 1.05rem;">
+                    1. " I miss You " ❤️
+                  </p>
+                  <p style="margin: 0 0 8px 0; font-style: italic; color: var(--text-main);">
+                    2. " I know sab reh lete hai par kese reh lete wo kabhi nhi samjhte . "
+                  </p>
+                  <p style="margin: 0; font-style: italic; color: var(--text-main);">
+                    3. " Mujhe birthday bohot pehle se yaad rahta hai par priority ka khel hai kiski kya hai . "
+                  </p>
+                </div>
 
-                Yours forever,
-                <strong>Your Favourite Person</strong> ♥
+                <p style="line-height: 1.7; margin-bottom: 15px;">
+                  Aur meri priority me, tum hamesha sabse pehle thi, ho, aur hamesha rahogi. Talking to you makes my whole world feel brighter. Even when you go to cute wars with me, get cranky, or overthink things—I love every single bit of it, because it is what makes us 'us'.
+                </p>
+
+                <p style="line-height: 1.7; margin-bottom: 25px;">
+                  Thank you for existing, Namra. May this birthday bring you all the endless smiles, peace, and love you deserve.
+                </p>
+
+                <div style="text-align: right;">
+                  <p style="margin: 0; font-style: italic; color: var(--text-muted);">Yours forever,</p>
+                  <strong style="font-size: 1.1rem; color: var(--accent-primary);">Your Favourite Person ♥</strong>
+                </div>
               </div>
             </div>
           </div>
@@ -599,25 +693,7 @@
     </div>
   </div>
 
-  <!-- ==========================================================================
-       PROOF ARCHIVE LOCK MODAL
-       ========================================================================== -->
-  <div class="letter-overlay" id="proof-lock-modal" style="display: none;">
-    <div class="letter-modal" style="max-width: 400px; height: auto; text-align: center;">
-      <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--accent-primary); margin-bottom: 12px;">Bohot jaldi ho rahi h !</h3>
-      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Please enter the passcode to access the Proof files.</p>
-      
-      <div style="margin-bottom: 20px;">
-        <input type="password" id="proof-pass-input" placeholder="Enter Code..." maxlength="4" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.4); text-align: center; font-size: 1.2rem; font-family: var(--font-body); outline: none; color: var(--text-main);">
-        <div id="proof-lock-error" style="color: var(--accent-secondary); font-size: 0.8rem; margin-top: 8px; min-height: 15px;"></div>
-      </div>
-      
-      <div style="display: flex; gap: 10px;">
-        <button class="welcome-btn" id="btn-proof-unlock" style="flex: 1; padding: 10px 0; font-size: 0.9rem;">Unlock</button>
-        <button class="welcome-btn" id="btn-proof-cancel" style="flex: 1; padding: 10px 0; font-size: 0.9rem; background: transparent; border: 1px solid var(--card-border); color: var(--text-main);">Cancel</button>
-      </div>
-    </div>
-  </div>
+
 
   <script src="music_data.js"></script>
   <script src="script.js"></script>

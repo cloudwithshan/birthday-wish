@@ -1645,3 +1645,125 @@ body {
     transform: translateY(-112vh) rotate(15deg) translateX(var(--sway-x));
   }
 }
+
+/* ==========================================================================
+   INTERACTIVE 3D SECRET DOOR STYLES
+   ========================================================================== */
+.secret-door-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 5px;
+  width: 100%;
+}
+
+.secret-door-wrapper {
+  perspective: 1400px;
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+}
+
+.secret-door-frame {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  border: 2px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(255, 107, 129, 0.2);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="ruby"] .secret-door-frame {
+  background: rgba(30, 20, 25, 0.7);
+}
+
+.secret-door-leaf {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #181124, #2d183f, #140d21);
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  cursor: pointer;
+  z-index: 10;
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.6s ease;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  user-select: none;
+}
+
+.secret-door-leaf:hover {
+  border-color: rgba(255, 215, 0, 0.7);
+  box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 107, 129, 0.5);
+}
+
+.secret-door-leaf.open {
+  transform: rotateY(-112deg);
+  pointer-events: none;
+}
+
+.door-arch-design {
+  border: 2px dashed rgba(255, 215, 0, 0.35);
+  border-radius: 18px;
+  padding: 35px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 82%;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.door-knob {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffd700, #ff9800, #b8860b);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.7), inset 0 2px 6px rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  animation: doorKnobGlow 2.5s infinite ease-in-out;
+}
+
+@keyframes doorKnobGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.9);
+  }
+}
+
+.door-content-revealed {
+  width: 100%;
+  height: 100%;
+  padding: clamp(20px, 4vw, 32px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  z-index: 5;
+  overflow-y: auto;
+}
+
+[data-theme="ruby"] .door-content-revealed {
+  background: rgba(35, 20, 25, 0.75);
+}

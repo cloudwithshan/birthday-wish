@@ -1,7 +1,7 @@
 {
-  "name": "muskii-birthday-portfolio",
+  "name": "namra-birthday",
   "version": "1.0.0",
-  "description": "Futuristic AI-themed birthday portfolio website for Muskii",
+  "description": "Romantic futuristic birthday portfolio website for Namra",
   "main": "index.html",
   "scripts": {
     "dev": "vite --host",
